@@ -14,9 +14,7 @@ from src.helper_funcs import check_and_make_dir
 
 def main():
     global_params()
-    #you must have the same number of colours as labels
-    # colours = ['b', 'c', 'orange', 'y', 'm', 'gray']
-    # labels = {'ddpg':'DDPG', 'dqnx':'DQNX', 'sotl':'SOTL', 'maxpressure':'Max-pressure', 'websters':'Webster\'s', 'uniform':'Uniform'}
+
     colours = [ 'c', 'y', 'm', 'gray']
     labels = {'dqnx':'DQNX', 'maxpressure':'Max-pressure', 'websters':'Webster\'s', 'uniform':'Uniform'}
     if len(colours) != len(labels):
@@ -175,17 +173,17 @@ def graph_travel_time(labels, colours, fp, save_dir):
     #prepare data for graph                                                          
     data_order = sorted(data.keys())                                                 
     data = [ data[d] for d in data_order]                                           
-    labels = [ labels[d] for d in data_order]                                       
+    labels = [ labels[d] for d in data_order]
     c = [ colours[d] for d in data_order]                                       
     #graph data                                                                      
     f, ax = plt.subplots(1,1)                                                        
     t = 'Travel Time '+r"$(s)$"+'\n('+r"$\mu,\sigma,$"+'median'+r"$)$"
     graph( ax, data, boxplot( ax, data, c, labels),                            
-                              xtitle='Traffic Signal Controller',                    
+                            #   xtitle='Traffic Signal Controller',                    
                               #ytitle_pad = ('Travel Time (s)\n('+r"/mu,/sigma,"+"median)", 60),                      
                               ytitle_pad = (t, 60),                      
-                              title='Traffic Signal Controller\nTravel Time) ',     
-                              legend=(0.82, 0.72),                                   
+                              title='Traffic Signal Controller\n(Travel Time) ',     
+                            #   legend="upper center",                                   
                               grid=True)                                             
 
     for i, d in enumerate(data_order):
@@ -290,7 +288,9 @@ def graph_individual_intersections(labels, colours, fp, metrics, save_dir):
                 ytitle = m.capitalize()+r" $(veh)$" if c == 0 else ''
             else:
                 ytitle = m.capitalize()+r" $(s)$" if c == 0 else ''
-            legend = (0.59, 0.6)
+            # legend = (0.59, 0.8)
+            legend = "upper right"
+
                 
             data_order = sorted(data.keys())               
             alias_p = 60 

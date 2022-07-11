@@ -29,10 +29,11 @@ def graph(ax, data, graph_func, xtitle=None, ytitle_pad=None, title=None, legend
     if legend:
         #ax.legend(elements, labels, loc=legend, framealpha=1.0)
         if colours is None:
-            ax.legend(elements, labels, loc=legend, framealpha=1.0)
+            ax.legend(elements, labels, loc=legend, framealpha=1.0, ncol=4, frameon=False)
         else:
             patches = [ mpatches.Patch(color=colours[l], label=l) for l in labels]
             ax.legend(handles=patches, loc=legend, framealpha=1.0)
+            # ax.legend(loc=legend, framealpha=1.0, frameon=False, ncol=4)
 
     if grid:
         ax.grid(linestyle='--')
@@ -45,7 +46,8 @@ def graph(ax, data, graph_func, xtitle=None, ytitle_pad=None, title=None, legend
 
 def boxplot(ax, data, colors, data_labels):
     #bp = ax.boxplot( data, labels = data_labels, patch_artist=True )
-    bp = ax.boxplot( data, notch=False, labels=['']*len(data_labels), patch_artist=True )
+    bp = ax.boxplot( data, notch=False, labels=data_labels, patch_artist=True )
+    # bp = ax.boxplot( data, notch=False, labels=['']*len(data_labels), patch_artist=True )
 
     for b, c in zip(bp['medians'], colors):
         ###white for all medians
