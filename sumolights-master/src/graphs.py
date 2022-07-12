@@ -18,13 +18,13 @@ def graph(ax, data, graph_func, xtitle=None, ytitle_pad=None, title=None, legend
 
     ###set the title and other such common elements
     if xtitle:
-        ax.set_xlabel(xtitle)
+        ax.set_xlabel(xtitle, fontsize=20)
                                                                    
     if ytitle_pad:
         ax.set_ylabel(ytitle_pad[0], rotation=360, labelpad=ytitle_pad[1])
                                                                    
     if title:
-        ax.set_title(title)
+        ax.set_title(title, fontsize=25)
 
     if legend:
         #ax.legend(elements, labels, loc=legend, framealpha=1.0)
@@ -111,6 +111,7 @@ def multi_line(ax, data, colors, data_labels):
 def scatter(ax, x, y, colors, data_labels, scatter_size=100):
     lines = []
     ax.scatter(x, y, color=colors, s=scatter_size, alpha=0.5)
+
     return lines, data_labels
 
 def get_cmap(n, name='brg'):

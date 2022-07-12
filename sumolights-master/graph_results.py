@@ -71,7 +71,8 @@ def graph_hyper_params(labels, colours, fp, save_dir):
         f.delaxes(axes[-1])
 
     XTITLE = 'Mean\nTravel Time '+r"$(s)$"
-    YTITLE = ('Standard\nDeviation\nTravel Time '+r"$(s)$", 80)
+    YTITLE = ('Standard\nDeviation', 60)
+    # YTITLE = ('Standard\nDeviation\nTravel Time '+r"$(s)$", 60)
 
     #graph each tsc hyperparemeter
     for ax, t, i in zip(axes, tsc, range(len(tsc))):
@@ -109,7 +110,8 @@ def graph_hyper_params(labels, colours, fp, save_dir):
                                   grid=True)                                                  
 
     #axis colourbar
-    cax = f.add_axes([0.915, 0.1, 0.05, 0.85])
+    cax = f.add_axes([0.908, 0.1, 0.05, 0.85])
+    # cax = f.add_axes([0.915, 0.1, 0.05, 0.85]) # original
     cmap = mp.cm.brg
     cm = LinearSegmentedColormap.from_list('rg', rg_colours, N=rg_colours.shape[0])
     norm = mp.colors.Normalize(vmin=0.5, vmax=1.0)
